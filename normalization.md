@@ -62,7 +62,7 @@ The final normalized design ensures minimal redundancy, maintains data integrity
 
 ## ER Diagram Reference
 The normalized ERD can be found here:  
-![Normalized ERD](normalized_ERD.png)
+![Normalized ERD](ERD/normalized_ERD.png)
 
 
 ---
