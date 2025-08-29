@@ -1,2 +1,1 @@
-# alx-airbnb-database
-alx-airbnb-database
+# AirBnB Database
