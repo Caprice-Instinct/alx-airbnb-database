@@ -2,6 +2,13 @@
 -- Database Performance Indexes
 -- ===============================
 
+-- Performance measurement BEFORE adding indexes
+\echo 'PERFORMANCE BEFORE INDEXES:'
+EXPLAIN ANALYZE SELECT * FROM users WHERE role = 'host';
+EXPLAIN ANALYZE SELECT * FROM properties WHERE location = 'Nairobi, Kenya';
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE status = 'confirmed';
+EXPLAIN ANALYZE SELECT b.id, u.name FROM bookings b JOIN users u ON b.user_id = u.id;
+
 -- Additional indexes for high-usage columns beyond those in schema.sql
 
 -- USERS TABLE
@@ -31,3 +38,10 @@ CREATE INDEX idx_payments_method ON payments(method);
 -- REVIEWS TABLE
 -- Index on booking_id for JOIN operations (if not already unique)
 CREATE INDEX idx_reviews_booking_id ON reviews(booking_id);
+
+-- Performance measurement AFTER adding indexes
+\echo 'PERFORMANCE AFTER INDEXES:'
+EXPLAIN ANALYZE SELECT * FROM users WHERE role = 'host';
+EXPLAIN ANALYZE SELECT * FROM properties WHERE location = 'Nairobi, Kenya';
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE status = 'confirmed';
+EXPLAIN ANALYZE SELECT b.id, u.name FROM bookings b JOIN users u ON b.user_id = u.id;
